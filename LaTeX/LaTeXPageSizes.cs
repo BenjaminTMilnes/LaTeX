@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace LaTeX
 {
-    public enum LaTeXEnvironments
+    public enum LaTeXPageSizes
     {
-        Document = 1,
-        Abstract = 2
+        A4Paper = 1,
+        A5Paper = 2,
+        B5Paper = 3,
+        LetterPaper = 4,
+        ExecutivePaper = 5
     }
 }

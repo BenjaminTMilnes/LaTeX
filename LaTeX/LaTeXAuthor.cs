@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace LaTeX
 {
-    public enum LaTeXEnvironments
+    [LaTeXCommandName("author")]
+    public class LaTeXAuthor : LaTeXCommand
     {
-        Document = 1,
-        Abstract = 2
     }
 }

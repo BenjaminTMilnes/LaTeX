@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILaTeXDocumentClassOption.cs" />
+    <Compile Include="ILaTeXUsePackageOption.cs" />
+    <Compile Include="LaTeXAnd.cs" />
+    <Compile Include="LaTeXAuthor.cs" />
     <Compile Include="LaTeXBegin.cs" />
     <Compile Include="LaTeXCommand.cs" />
     <Compile Include="LaTeXCommandName.cs" />
@@ -48,6 +52,15 @@
     <Compile Include="LaTeXDocumentClasses.cs" />
     <Compile Include="LaTeXEnd.cs" />
     <Compile Include="LaTeXEnvironments.cs" />
+    <Compile Include="LaTeXFontSizeOption.cs" />
+    <Compile Include="LaTeXLineBreak.cs" />
+    <Compile Include="LaTeXMakeTitle.cs" />
+    <Compile Include="LaTeXPageSizeOption.cs" />
+    <Compile Include="LaTeXPageSizes.cs" />
+    <Compile Include="LaTeXText.cs" />
+    <Compile Include="LaTeXTitle.cs" />
+    <Compile Include="LaTeXToday.cs" />
+    <Compile Include="LaTeXUsePackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

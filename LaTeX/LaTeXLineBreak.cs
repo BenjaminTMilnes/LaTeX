@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace LaTeX
 {
-    public enum LaTeXEnvironments
+    public class LaTeXLineBreak : LaTeXCommand
     {
-        Document = 1,
-        Abstract = 2
     }
 }

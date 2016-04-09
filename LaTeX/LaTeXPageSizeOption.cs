@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace LaTeX
 {
-    public enum LaTeXEnvironments
+    public class LaTeXPageSizeOption : ILaTeXDocumentClassOption
     {
-        Document = 1,
-        Abstract = 2
+        public LaTeXPageSizes PageSize { get; set; }
     }
 }

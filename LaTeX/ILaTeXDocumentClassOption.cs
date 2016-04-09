@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace LaTeX
 {
-    public enum LaTeXEnvironments
+    public interface ILaTeXDocumentClassOption
     {
-        Document = 1,
-        Abstract = 2
     }
 }

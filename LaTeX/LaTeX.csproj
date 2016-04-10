@@ -45,8 +45,10 @@
     <Compile Include="LaTeXAnd.cs" />
     <Compile Include="LaTeXAuthor.cs" />
     <Compile Include="LaTeXBegin.cs" />
+    <Compile Include="LaTeXChapter.cs" />
     <Compile Include="LaTeXCommand.cs" />
     <Compile Include="LaTeXCommandName.cs" />
+    <Compile Include="LaTeXCounters.cs" />
     <Compile Include="LaTeXDocument.cs" />
     <Compile Include="LaTeXDocumentClass.cs" />
     <Compile Include="LaTeXDocumentClasses.cs" />
@@ -57,6 +59,13 @@
     <Compile Include="LaTeXMakeTitle.cs" />
     <Compile Include="LaTeXPageSizeOption.cs" />
     <Compile Include="LaTeXPageSizes.cs" />
+    <Compile Include="LaTeXParagraph.cs" />
+    <Compile Include="LaTeXPart.cs" />
+    <Compile Include="LaTeXSection.cs" />
+    <Compile Include="LaTeXSetCounter.cs" />
+    <Compile Include="LaTeXSubparagraph.cs" />
+    <Compile Include="LaTeXSubsection.cs" />
+    <Compile Include="LaTeXSubsubsection.cs" />
     <Compile Include="LaTeXText.cs" />
     <Compile Include="LaTeXTitle.cs" />
     <Compile Include="LaTeXToday.cs" />

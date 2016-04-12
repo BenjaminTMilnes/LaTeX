@@ -9,6 +9,9 @@ namespace LaTeX
     public enum LaTeXEnvironments
     {
         Document = 1,
-        Abstract = 2
+        Abstract = 2,
+        LeftAlignment = 3,
+        RightAlignment = 4,
+        CenterAlignment = 5
     }
 }

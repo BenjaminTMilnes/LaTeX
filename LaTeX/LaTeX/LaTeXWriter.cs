@@ -22,6 +22,12 @@ namespace LaTeX
 
                 _streamWriter.Write("\\documentclass{book}\n\n");
             }
+            else if (command is LaTeXUsePackageCommand)
+            {
+                var c = command as LaTeXUsePackageCommand;
+
+                _streamWriter.Write("\\usepackage{" + c.PackageName + "}\n");
+            }
             else if (command is LaTeXBeginCommand)
             {
                 var c = command as LaTeXBeginCommand;

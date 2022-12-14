@@ -4,11 +4,11 @@ using System.Text;
 
 namespace LaTeX
 {
-    public class LaTeXCommandName : Attribute
+    public class LaTeXCommandNameAttribute : Attribute
     {
         public string Name { get; private set; }
 
-        public LaTeXCommandName(string name)
+        public LaTeXCommandNameAttribute(string name)
         {
             Name = name;
         }

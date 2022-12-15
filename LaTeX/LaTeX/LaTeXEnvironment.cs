@@ -6,6 +6,8 @@ namespace LaTeX
 {
     public enum LaTeXEnvironment
     {
-        Document = 1
+        Document = 1,
+        FlushLeft = 2,
+        FlushRight = 3
     }
 }

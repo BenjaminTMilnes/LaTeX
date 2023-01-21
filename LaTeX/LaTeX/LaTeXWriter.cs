@@ -78,6 +78,22 @@ namespace LaTeX
             }
         }
 
+        public void WriteText(string text)
+        {
+            text = text.Replace(@"#", @"\#");
+            text = text.Replace(@"$", @"\$");
+            text = text.Replace(@"%", @"\%");
+            text = text.Replace(@"&", @"\&");
+            text = text.Replace(@"\", @"\textbackslash");
+            text = text.Replace(@"^", @"\textasciicircum");
+            text = text.Replace(@"_", @"\_");
+            text = text.Replace(@"{", @"\{");
+            text = text.Replace(@"}", @"\}");
+            text = text.Replace(@"~", @"\textasciitilde");
+
+            Write(text);
+        }
+
         public void Write(string value)
         {
             _streamWriter.Write(value);

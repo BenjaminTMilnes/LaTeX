@@ -5,20 +5,18 @@ using System.Text;
 namespace LaTeX
 {
     [LaTeXCommandName("section")]
-    public class LaTeXSectionCommand : LaTeXCommand
+    public class LaTeXSectionCommand : LaTeXContentCommand
     {
         public bool IsNumbered { get; set; }
-        public IList<LaTeXCommand> Content { get; set; }
 
-        public LaTeXSectionCommand()
+        public LaTeXSectionCommand() : base()
         {
             IsNumbered = true;
-            Content = new List<LaTeXCommand>();
         }
 
-        public LaTeXSectionCommand(string content) : this()
+        public LaTeXSectionCommand(string content) : base(content)
         {
-            Content.Add(new LaTeXText(content));
+            IsNumbered = true;
         }
     }
 }

@@ -5,20 +5,18 @@ using System.Text;
 namespace LaTeX
 {
     [LaTeXCommandName("subsection")]
-    public class LaTeXSubsectionCommand : LaTeXCommand
+    public class LaTeXSubsectionCommand : LaTeXContentCommand
     {
         public bool IsNumbered { get; set; }
-        public IList<LaTeXCommand> Content { get; set; }
 
-        public LaTeXSubsectionCommand()
+        public LaTeXSubsectionCommand() : base()
         {
             IsNumbered = true;
-            Content = new List<LaTeXCommand>();
         }
 
-        public LaTeXSubsectionCommand(string content) : this()
+        public LaTeXSubsectionCommand(string content) : base(content)
         {
-            Content.Add(new LaTeXText(content));
+            IsNumbered = true;
         }
     }
 }

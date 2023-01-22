@@ -78,6 +78,14 @@ namespace LaTeX
                 {
                     Write("\\" + cn + "{flushright}\n");
                 }
+                else if (c.Environment == LaTeXEnvironment.Centre)
+                {
+                    Write("\\" + cn + "{center}\n");
+                }
+                else if (c.Environment == LaTeXEnvironment.Enumeration)
+                {
+                    Write("\\" + cn + "{enumerate}\n");
+                }
             }
             else if (command is LaTeXEndCommand)
             {
@@ -94,6 +102,14 @@ namespace LaTeX
                 else if (c.Environment == LaTeXEnvironment.FlushRight)
                 {
                     Write("\\" + cn + "{flushright}\n");
+                }
+                else if (c.Environment == LaTeXEnvironment.Centre)
+                {
+                    Write("\\" + cn + "{center}\n");
+                }
+                else if (c.Environment == LaTeXEnvironment.Enumeration)
+                {
+                    Write("\\" + cn + "{enumerate}\n");
                 }
             }
             else if (command is LaTeXPartCommand)
@@ -162,6 +178,16 @@ namespace LaTeX
 
                 WriteText(c.Content);
             }
+            else if (command is LaTeXComment)
+            {
+                var c = command as LaTeXComment;
+
+                WriteComment(c.Content);
+            }
+            else
+            {
+                throw new Exception($"Unknown command {command.GetType()}.");
+            }
         }
 
         public void WriteText(string text)
@@ -178,6 +204,11 @@ namespace LaTeX
             text = text.Replace(@"~", @"\textasciitilde");
 
             Write(text);
+        }
+
+        public void WriteComment(string text)
+        {
+            Write("% " + text);
         }
 
         public void Write(string value)

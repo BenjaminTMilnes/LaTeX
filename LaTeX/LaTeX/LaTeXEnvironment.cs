@@ -8,6 +8,8 @@ namespace LaTeX
     {
         Document = 1,
         FlushLeft = 2,
-        FlushRight = 3
+        FlushRight = 3,
+        Centre = 4,
+        Enumeration = 5,
     }
 }

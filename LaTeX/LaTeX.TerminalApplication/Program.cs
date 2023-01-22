@@ -6,6 +6,9 @@ namespace LaTeX.TerminalApplication
     {
         static void Main(string[] args)
         {
+            var t1 = "Grumpy wizards make toxic brew for the Evil Queen and Jack. Grumpy wizards make toxic brew for the Evil Queen and Jack. Grumpy wizards make toxic brew for the Evil Queen and Jack. Grumpy wizards make toxic brew for the Evil Queen and Jack. Grumpy wizards make toxic brew for the Evil Queen and Jack. ";
+
+
             var command1 = new LaTeXDocumentClassCommand();
             var command4 = new LaTeXUsePackageCommand("multicol");
             var command5 = new LaTeXUsePackageCommand("tikz");
@@ -26,14 +29,26 @@ namespace LaTeX.TerminalApplication
             document.Content.Add(new LaTeXChapterCommand("The First Chapter"));
             document.Content.Add(new LaTeXSectionCommand("The First Section"));
             document.Content.Add(new LaTeXSubsectionCommand("The First Subsection"));
+            document.Content.Add(new LaTeXParagraph(t1));
+            document.Content.Add(new LaTeXParagraph(t1));
+            document.Content.Add(new LaTeXParagraph(t1));
             document.Content.Add(new LaTeXSubsectionCommand("The Second Subsection"));
+            document.Content.Add(new LaTeXParagraph(t1));
             document.Content.Add(new LaTeXSubsectionCommand("The Third Subsection"));
+            document.Content.Add(new LaTeXParagraph(t1));
+            document.Content.Add(new LaTeXParagraph(t1));
             document.Content.Add(new LaTeXSectionCommand("The Second Section"));
+            document.Content.Add(new LaTeXParagraph(t1));
+            document.Content.Add(new LaTeXParagraph(t1));
+            document.Content.Add(new LaTeXParagraph(t1));
             document.Content.Add(new LaTeXSectionCommand("The Third Section"));
+            document.Content.Add(new LaTeXParagraph(t1));
             document.Content.Add(new LaTeXChapterCommand("The Second Chapter"));
             document.Content.Add(new LaTeXPartCommand("The Second Part"));
             document.Content.Add(new LaTeXChapterCommand("The First Chapter"));
+            document.Content.Add(new LaTeXParagraph(t1));
             document.Content.Add(new LaTeXChapterCommand("The Second Chapter"));
+            document.Content.Add(new LaTeXParagraph(t1));
 
             document.Content.Add(command3);
 

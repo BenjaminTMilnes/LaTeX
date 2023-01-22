@@ -68,7 +68,7 @@ namespace LaTeX
 
                 if (c.Environment == LaTeXEnvironment.Document)
                 {
-                    Write("\\" + cn + "{document}\n");
+                    Write("\n\\" + cn + "{document}\n\n");
                 }
                 else if (c.Environment == LaTeXEnvironment.FlushLeft)
                 {
@@ -125,7 +125,7 @@ namespace LaTeX
 
                 Write("{");
                 WriteCommands(c.Content);
-                Write("}\n");
+                Write("}\n\n");
             }
             else if (command is LaTeXChapterCommand)
             {
@@ -140,7 +140,7 @@ namespace LaTeX
 
                 Write("{");
                 WriteCommands(c.Content);
-                Write("}\n");
+                Write("}\n\n");
             }
             else if (command is LaTeXSectionCommand)
             {
@@ -155,7 +155,7 @@ namespace LaTeX
 
                 Write("{");
                 WriteCommands(c.Content);
-                Write("}\n");
+                Write("}\n\n");
             }
             else if (command is LaTeXSubsectionCommand)
             {
@@ -170,7 +170,29 @@ namespace LaTeX
 
                 Write("{");
                 WriteCommands(c.Content);
-                Write("}\n");
+                Write("}\n\n");
+            }
+            else if (command is LaTeXSubsubsectionCommand)
+            {
+                var c = command as LaTeXSubsubsectionCommand;
+
+                Write("\\" + cn);
+
+                if (!c.IsNumbered)
+                {
+                    Write("*");
+                }
+
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}\n\n");
+            }
+            else if (command is LaTeXParagraph)
+            {
+                var c = command as LaTeXParagraph;
+
+                WriteCommands(c.Content);
+                Write("\n\n");
             }
             else if (command is LaTeXText)
             {

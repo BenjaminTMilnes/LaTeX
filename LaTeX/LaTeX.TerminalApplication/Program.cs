@@ -23,6 +23,10 @@ namespace LaTeX.TerminalApplication
             document.Content.Add(command1);
             document.Content.Add(command4);
             document.Content.Add(command5);
+
+            document.Content.Add(new LaTeXTitleCommand("The Title of the Book"));
+            document.Content.Add(new LaTeXAuthorCommand("John Smith"));
+
             document.Content.Add(command2);
 
             document.Content.Add(new LaTeXPartCommand("The First Part"));

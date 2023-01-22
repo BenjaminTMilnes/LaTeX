@@ -62,6 +62,24 @@ namespace LaTeX
 
                 Write("\\" + cn + "{" + c.PackageName + "}\n");
             }
+            else if (command is LaTeXTitleCommand)
+            {
+                var c = command as LaTeXTitleCommand;
+
+                Write("\\" + cn); 
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}\n");
+            }
+            else if (command is LaTeXAuthorCommand)
+            {
+                var c = command as LaTeXAuthorCommand;
+
+                Write("\\" + cn);
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}\n");
+            }
             else if (command is LaTeXBeginCommand)
             {
                 var c = command as LaTeXBeginCommand;

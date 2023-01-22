@@ -15,13 +15,31 @@ namespace LaTeX.TerminalApplication
             command2.Environment = LaTeXEnvironment.Document;
             command3.Environment = LaTeXEnvironment.Document;
 
+            var document = new LaTeXDocument();
+
+            document.Content.Add(command1);
+            document.Content.Add(command4);
+            document.Content.Add(command5);
+            document.Content.Add(command2);
+
+            document.Content.Add(new LaTeXPartCommand("The First Part"));
+            document.Content.Add(new LaTeXChapterCommand("The First Chapter"));
+            document.Content.Add(new LaTeXSectionCommand("The First Section"));
+            document.Content.Add(new LaTeXSubsectionCommand("The First Subsection"));
+            document.Content.Add(new LaTeXSubsectionCommand("The Second Subsection"));
+            document.Content.Add(new LaTeXSubsectionCommand("The Third Subsection"));
+            document.Content.Add(new LaTeXSectionCommand("The Second Section"));
+            document.Content.Add(new LaTeXSectionCommand("The Third Section"));
+            document.Content.Add(new LaTeXChapterCommand("The Second Chapter"));
+            document.Content.Add(new LaTeXPartCommand("The Second Part"));
+            document.Content.Add(new LaTeXChapterCommand("The First Chapter"));
+            document.Content.Add(new LaTeXChapterCommand("The Second Chapter"));
+
+            document.Content.Add(command3);
+
             using (var latexWriter = new LaTeXWriter(@"..\..\..\..\output.tex"))
             {
-                latexWriter.WriteCommand(command1);
-                latexWriter.WriteCommand(command4);
-                latexWriter.WriteCommand(command5);
-                latexWriter.WriteCommand(command2);
-                latexWriter.WriteCommand(command3);
+                latexWriter.WriteDocument(document);
             }
         }
     }

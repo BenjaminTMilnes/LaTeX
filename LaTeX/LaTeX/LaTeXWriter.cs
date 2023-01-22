@@ -14,16 +14,36 @@ namespace LaTeX
             _streamWriter = new StreamWriter(filePath);
         }
 
+        public void WriteDocument(LaTeXDocument document)
+        {
+            WriteCommands(document.Content);
+        }
+
         public string GetCommandName(LaTeXCommand command)
         {
-            var commandNameAttribute = command.GetType().GetCustomAttributes(typeof(LaTeXCommandNameAttribute), true)[0] as LaTeXCommandNameAttribute;
+            var commandNameAttributes = command.GetType().GetCustomAttributes(typeof(LaTeXCommandNameAttribute), true);
 
-            return commandNameAttribute.Name;
+            if (commandNameAttributes.Length > 0)
+            {
+                var commandNameAttribute = commandNameAttributes[0] as LaTeXCommandNameAttribute;
+
+                return commandNameAttribute.Name;
+            }
+
+            return "";
         }
 
         public void WriteCommand(string name)
         {
             Write("\\" + name);
+        }
+
+        public void WriteCommands(IList<LaTeXCommand> commands)
+        {
+            foreach (var command in commands)
+            {
+                WriteCommand(command);
+            }
         }
 
         public void WriteCommand(LaTeXCommand command)
@@ -75,6 +95,72 @@ namespace LaTeX
                 {
                     Write("\\" + cn + "{flushright}\n");
                 }
+            }
+            else if (command is LaTeXPartCommand)
+            {
+                var c = command as LaTeXPartCommand;
+
+                Write("\\" + cn);
+
+                if (!c.IsNumbered)
+                {
+                    Write("*");
+                }
+
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}\n");
+            }
+            else if (command is LaTeXChapterCommand)
+            {
+                var c = command as LaTeXChapterCommand;
+
+                Write("\\" + cn);
+
+                if (!c.IsNumbered)
+                {
+                    Write("*");
+                }
+
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}\n");
+            }
+            else if (command is LaTeXSectionCommand)
+            {
+                var c = command as LaTeXSectionCommand;
+
+                Write("\\" + cn);
+
+                if (!c.IsNumbered)
+                {
+                    Write("*");
+                }
+
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}\n");
+            }
+            else if (command is LaTeXSubsectionCommand)
+            {
+                var c = command as LaTeXSubsectionCommand;
+
+                Write("\\" + cn);
+
+                if (!c.IsNumbered)
+                {
+                    Write("*");
+                }
+
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}\n");
+            }
+            else if (command is LaTeXText)
+            {
+                var c = command as LaTeXText;
+
+                WriteText(c.Content);
             }
         }
 

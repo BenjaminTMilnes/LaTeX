@@ -5,18 +5,14 @@ using System.Text;
 namespace LaTeX
 {
     [LaTeXCommandName("author")]
-    public class LaTeXAuthorCommand : LaTeXCommand
+    public class LaTeXAuthorCommand : LaTeXContentCommand
     {
-        public IList<LaTeXCommand> Content { get; set; }
-
-        public LaTeXAuthorCommand()
+        public LaTeXAuthorCommand() : base()
         {
-            Content = new List<LaTeXCommand>();
         }
 
-        public LaTeXAuthorCommand(string content) : this()
+        public LaTeXAuthorCommand(string content) : base(content)
         {
-            Content.Add(new LaTeXText(content));
         }
     }
 }

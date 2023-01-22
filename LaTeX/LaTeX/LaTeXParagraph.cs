@@ -4,18 +4,14 @@ using System.Text;
 
 namespace LaTeX
 {
-    public class LaTeXParagraph : LaTeXCommand
+    public class LaTeXParagraph : LaTeXContentCommand
     {
-        public IList<LaTeXCommand> Content { get; set; }
-
-        public LaTeXParagraph()
+        public LaTeXParagraph() : base()
         {
-            Content = new List<LaTeXCommand>();
         }
 
-        public LaTeXParagraph(string content) : this()
+        public LaTeXParagraph(string content) : base(content)
         {
-            Content.Add(new LaTeXText(content));
         }
     }
 }

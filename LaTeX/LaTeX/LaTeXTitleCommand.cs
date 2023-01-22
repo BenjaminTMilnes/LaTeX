@@ -5,18 +5,14 @@ using System.Text;
 namespace LaTeX
 {
     [LaTeXCommandName("title")]
-    public class LaTeXTitleCommand : LaTeXCommand
+    public class LaTeXTitleCommand : LaTeXContentCommand
     {
-        public IList<LaTeXCommand> Content { get; set; }
-
-        public LaTeXTitleCommand()
+        public LaTeXTitleCommand() : base()
         {
-            Content = new List<LaTeXCommand>();
         }
 
-        public LaTeXTitleCommand(string content) : this()
+        public LaTeXTitleCommand(string content) : base(content)
         {
-            Content.Add(new LaTeXText(content));
         }
     }
 }

@@ -66,7 +66,7 @@ namespace LaTeX
             {
                 var c = command as LaTeXTitleCommand;
 
-                Write("\\" + cn); 
+                Write("\\" + cn);
                 Write("{");
                 WriteCommands(c.Content);
                 Write("}\n");
@@ -228,6 +228,28 @@ namespace LaTeX
             {
                 throw new Exception($"Unknown command {command.GetType()}.");
             }
+        }
+
+        public void WriteTableRow(bool isLastRow = false, params string[] data)
+        {
+            for (var i = 0; i < data.Length; i++)
+            {
+                var datum = data[i];
+
+                if (i > 0)
+                {
+                    Write(" & ");
+                }
+
+                Write(datum.Replace(@"&", @"\&"));
+            }
+
+            if (!isLastRow)
+            {
+                Write(" \\\\");
+            }
+
+            Write(" \n");
         }
 
         public void WriteText(string text)

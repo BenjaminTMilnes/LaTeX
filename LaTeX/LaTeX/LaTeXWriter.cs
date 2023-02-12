@@ -5,10 +5,20 @@ using System.IO;
 
 namespace LaTeX
 {
+    /// <summary>
+    /// A class that provides methods for writing LaTeX to a stream. This class provides both low-level methods - such as writing the exact LaTeX that should appear in the file without any interference - and high-level methods - such as writing out the full document from a hierarchical structure of commands. This is necessary because LaTeX has a very inconsistent syntax - particularly when LaTeX packages are considered - and sometimes it is necessary to write some LaTeX literally without much help from a library such as this one.
+    /// </summary>
     public class LaTeXWriter : IDisposable
     {
+        /// <summary>
+        /// The underlying stream writer object.
+        /// </summary>
         protected StreamWriter _streamWriter;
 
+        /// <summary>
+        /// Creates a new instance of LaTeXWriter for writing LaTeX to a file.
+        /// </summary>
+        /// <param name="filePath"></param>
         public LaTeXWriter(string filePath)
         {
             _streamWriter = new StreamWriter(filePath);
@@ -252,7 +262,12 @@ namespace LaTeX
             Write(" \n");
         }
 
-        public void WriteText(string text)
+        /// <summary>
+        /// Replaces all reserved characters in the given string with their escaped values. Useful when writing text to a LaTeX stream.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string EscapeText(string text)
         {
             text = text.Replace(@"#", @"\#");
             text = text.Replace(@"$", @"\$");
@@ -265,7 +280,19 @@ namespace LaTeX
             text = text.Replace(@"}", @"\}");
             text = text.Replace(@"~", @"\textasciitilde");
 
+            return text;
+        }
+
+        public void WriteText(string text)
+        {
+            text = EscapeText(text);
+
             Write(text);
+        }
+
+        public void WriteCommentLine(string text)
+        {
+            WriteLine("% " + text);
         }
 
         public void WriteComment(string text)
@@ -273,6 +300,19 @@ namespace LaTeX
             Write("% " + text);
         }
 
+        /// <summary>
+        /// Writes the given string to the stream without modifying it, and starts a new line.
+        /// </summary>
+        /// <param name="value"></param>
+        public void WriteLine(string value)
+        {
+            Write(value + " \n");
+        }
+
+        /// <summary>
+        /// Writes the given string to the stream without modifying it in any way. Useful for writing literal LaTeX to the stream.
+        /// </summary>
+        /// <param name="value"></param>
         public void Write(string value)
         {
             _streamWriter.Write(value);

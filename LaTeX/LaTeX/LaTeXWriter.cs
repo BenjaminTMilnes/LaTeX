@@ -304,9 +304,16 @@ namespace LaTeX
         /// Writes the given string to the stream without modifying it, and starts a new line.
         /// </summary>
         /// <param name="value"></param>
-        public void WriteLine(string value)
+        public void WriteLine(string value = "")
         {
-            Write(value + " \n");
+            if (value.Trim() == "")
+            {
+                Write("\n");
+            }
+            else
+            {
+                Write(value + " \n");
+            }
         }
 
         /// <summary>

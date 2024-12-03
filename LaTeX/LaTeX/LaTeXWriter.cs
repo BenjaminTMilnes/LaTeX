@@ -222,6 +222,15 @@ namespace LaTeX
                 WriteCommands(c.Content);
                 Write("\n\n");
             }
+            else if (command is LaTeXBoldTextCommand)
+            {
+                var c = command as LaTeXBoldTextCommand;
+
+                Write("\\" + cn);
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}");
+            }
             else if (command is LaTeXText)
             {
                 var c = command as LaTeXText;

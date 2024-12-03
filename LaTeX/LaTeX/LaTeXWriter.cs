@@ -231,6 +231,15 @@ namespace LaTeX
                 WriteCommands(c.Content);
                 Write("}");
             }
+            else if (command is LaTeXItalicTextCommand)
+            {
+                var c = command as LaTeXItalicTextCommand;
+
+                Write("\\" + cn);
+                Write("{");
+                WriteCommands(c.Content);
+                Write("}");
+            }
             else if (command is LaTeXText)
             {
                 var c = command as LaTeXText;

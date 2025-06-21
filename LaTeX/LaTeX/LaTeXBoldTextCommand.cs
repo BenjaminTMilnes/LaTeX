@@ -14,5 +14,15 @@ namespace LaTeX
         public LaTeXBoldTextCommand(string content) : base(content)
         {
         }
+
+        public override void Write(LaTeXWriter latexWriter)
+        {
+            var cn = latexWriter.GetCommandName(this);
+
+            latexWriter.Write("\\" + cn);
+            latexWriter.Write("{");
+            latexWriter.WriteCommands(Content);
+            latexWriter.Write("}");
+        }
     }
 }

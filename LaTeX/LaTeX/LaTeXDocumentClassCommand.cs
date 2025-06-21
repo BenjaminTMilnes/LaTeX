@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace LaTeX
@@ -12,6 +13,13 @@ namespace LaTeX
         public LaTeXDocumentClassCommand()
         {
             DocumentClass = LaTeXDocumentClass.Book;
+        }
+
+        public override void Write(LaTeXWriter latexWriter)
+        {
+            var cn = latexWriter.GetCommandName(this);
+
+            latexWriter.Write("\\" + cn + "{book}\n\n");
         }
     }
 }

@@ -18,5 +18,21 @@ namespace LaTeX
         {
             IsNumbered = true;
         }
+
+        public override void Write(LaTeXWriter latexWriter)
+        {
+            var cn = latexWriter.GetCommandName(this);
+
+            latexWriter.Write("\\" + cn);
+
+            if (!IsNumbered)
+            {
+                latexWriter.Write("*");
+            }
+
+            latexWriter.Write("{");
+            latexWriter.WriteCommands(Content);
+            latexWriter.Write("}\n\n");
+        }
     }
 }

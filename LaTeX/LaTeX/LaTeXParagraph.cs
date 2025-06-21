@@ -13,5 +13,11 @@ namespace LaTeX
         public LaTeXParagraph(string content) : base(content)
         {
         }
+
+        public override void Write(LaTeXWriter latexWriter)
+        {
+            latexWriter.WriteCommands(Content);
+            latexWriter.Write("\n\n");
+        }
     }
 }

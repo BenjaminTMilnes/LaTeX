@@ -9,5 +9,8 @@ namespace LaTeX
     /// </summary>
     public abstract class LaTeXCommand
     {
+        public virtual void Write(LaTeXWriter latexWriter)
+        {
+        }
     }
 }

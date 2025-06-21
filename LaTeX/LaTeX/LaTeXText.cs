@@ -17,5 +17,10 @@ namespace LaTeX
         {
             Content = content;
         }
+
+        public override void Write(LaTeXWriter latexWriter)
+        {
+            latexWriter.WriteText(Content);
+        }
     }
 }

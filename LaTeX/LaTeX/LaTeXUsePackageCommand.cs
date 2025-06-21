@@ -13,5 +13,12 @@ namespace LaTeX
         {
             PackageName = packageName;
         }
+
+        public override void Write(LaTeXWriter latexWriter)
+        {
+            var cn = latexWriter.GetCommandName(this);
+
+            latexWriter.Write("\\" + cn + "{" + PackageName + "}\n");
+        }
     }
 }

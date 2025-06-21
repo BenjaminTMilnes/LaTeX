@@ -26,9 +26,12 @@ namespace LaTeX.TerminalApplication
 
             document.Content.Add(new LaTeXTitleCommand("The Title of the Book"));
             document.Content.Add(new LaTeXAuthorCommand("John Smith"));
+            document.Content.Add(new LaTeXDateCommand());
 
             document.Content.Add(command2);
 
+            document.Content.Add(new LaTeXIncludeTitle());
+            document.Content.Add(new LaTeXIncludeTableOfContents());
             document.Content.Add(new LaTeXPartCommand("The First Part"));
             document.Content.Add(new LaTeXChapterCommand("The First Chapter"));
             document.Content.Add(new LaTeXSectionCommand("The First Section"));
